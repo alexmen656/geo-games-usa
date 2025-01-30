@@ -47,6 +47,7 @@ export default {
   padding: 10px;
   color: white;
   z-index: 1005;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .user-profile {

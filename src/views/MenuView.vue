@@ -72,6 +72,14 @@
       </ul>
     </div>
     <MenuFooter />
+    <div v-if="howToPlayModal" class="modal">
+      <div class="modal-content">
+        <span class="close" @click="showLeaderboard = false">&times;</span>
+        <h2>Leaderboard</h2>
+
+        rškk
+      </div>
+    </div>
   </div>
 </template>
 
@@ -85,28 +93,33 @@ export default {
   },
   data() {
     return {
+      howToPlayModal: false,
       activeTab: "games",
       games: [
         {
           id: "game1",
           name: "Guess the Way",
+          tutorial: "",
           path: "game/1",
           image: "https://alex.polan.sk/usa-geo-games/assets/game1.jpg",
         },
         {
           id: "game2",
           name: "Name All US States",
+          tutorial: "",
           path: "game/2",
           image: "https://alex.polan.sk/usa-geo-games/assets/game2.jpg",
         },
         {
           id: "game3",
           name: "CityScope",
+          tutorial: "",
           path: "game/3",
           image: "https://alex.polan.sk/usa-geo-games/assets/game3.jpg",
         },
       ],
       leaderboard: [],
+      howToPlayModal_Game: "game1",
     };
   },
   mounted() {
@@ -123,7 +136,9 @@ export default {
       this.$router.push(game);
     },
     showHowToPlay(game) {
-      this.$router.push(`/how-to-play/${game}`);
+      //this.$router.push(`/how-to-play/${game}`);
+      this.howToPlayModal = true;
+      this.howToPlayModal_Game = game;
     },
   },
 };
@@ -333,8 +348,8 @@ button:hover {
   background-color: gold;
   padding: 10px;
   border-radius: 10px;
-  height: 130px;
-  width: 140px;
+  height: 170px;
+  width: 180px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -346,8 +361,8 @@ button:hover {
   background-color: silver;
   padding: 10px;
   border-radius: 10px;
-  height: 100px;
-  width: 140px;
+  height: 130px;
+  width: 180px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -359,11 +374,45 @@ button:hover {
   background-color: #cd7f32;
   padding: 10px;
   border-radius: 10px;
-  height: 80px;
-  width: 140px;
+  height: 100px;
+  width: 180px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.l_li {
+  display: flex;
+  /*justify-content: space-between;*/
+  padding: 5px;
+}
+
+.l_li > span {
+  flex: 1;
+  text-align: center;
+}
+
+.l_li > .score {
+  text-align: end;
+}
+
+.l_li > .place {
+  text-align: start;
+}
+
+.l_li.striped {
+  background-color: rgb(70, 69, 69);
+}
+
+.l_li.non-striped {
+  background-color: black;
+}
+
+ul {
+  margin: 0;
+  padding: 10px;
+  max-width: 50%;
+  transform: translateX(50%);
 }
 </style>
