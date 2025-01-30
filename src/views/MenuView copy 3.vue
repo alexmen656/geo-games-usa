@@ -12,10 +12,7 @@
         </button>
         <button
           :class="{ active: activeTab === 'leaderboard' }"
-          @click="
-            activeTab = 'leaderboard';
-            fetchLeaderboard();
-          "
+          @click="activeTab = 'leaderboard'; fetchLeaderboard()"
         >
           Leaderboard
         </button>
@@ -36,39 +33,22 @@
     <div v-if="activeTab === 'leaderboard'" class="leaderboard">
       <h2>Leaderboard</h2>
       <div class="podium">
-        <div v-if="leaderboard[1]" class="second">
-          <div class="position">2.</div>
-          <div class="name">{{ leaderboard[1].name }}</div>
-          <div class="score">{{ leaderboard[1].score }}</div>
+        <div class="podium-spot second">
+          <div class="podium-rank">2</div>
+          <div class="podium-name">Player 2</div>
         </div>
-        <div v-if="leaderboard[0]" class="first">
-          <div class="position">1.</div>
-          <div class="name">{{ leaderboard[0].name }}</div>
-          <div class="score">{{ leaderboard[0].score }}</div>
+        <div class="podium-spot first">
+          <div class="podium-rank">1</div>
+          <div class="podium-name">Player 1</div>
         </div>
-        <div v-if="leaderboard[2]" class="third">
-          <div class="position">3.</div>
-          <div class="name">{{ leaderboard[2].name }}</div>
-          <div class="score">{{ leaderboard[2].score }}</div>
+        <div class="podium-spot third">
+          <div class="podium-rank">3</div>
+          <div class="podium-name">Player 3</div>
         </div>
+
       </div>
       <ul>
-        <li
-          v-for="(player, index) in leaderboard.slice(3)"
-          :key="player.name"
-          :class="{
-            striped: index % 2 === 0,
-            'non-striped': index % 2 !== 0,
-          }"
-          class="l_li"
-        >
-          <span class="place">{{ index + 4 }}. Place</span>
-          <span
-            >{{ player.name
-            }}<!--:--></span
-          >
-          <span class="score">{{ player.score }}</span>
-        </li>
+        <li></li>
       </ul>
     </div>
     <MenuFooter />
@@ -314,56 +294,5 @@ button:hover {
   to {
     opacity: 1;
   }
-}
-
-.podium {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  margin-bottom: 20px;
-}
-
-.podium > div {
-  text-align: center;
-  margin: 0 10px;
-}
-
-.first {
-  order: 1;
-  background-color: gold;
-  padding: 10px;
-  border-radius: 10px;
-  height: 130px;
-  width: 140px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.second {
-  order: 0;
-  background-color: silver;
-  padding: 10px;
-  border-radius: 10px;
-  height: 100px;
-  width: 140px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.third {
-  order: 2;
-  background-color: #cd7f32;
-  padding: 10px;
-  border-radius: 10px;
-  height: 80px;
-  width: 140px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 </style>
