@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             }
         }
     } else {
-        $sql = "SELECT name, score1 FROM geo_games_usa_leaderboard ORDER BY score1 DESC";
+        $sql = "SELECT avatar, name, score1, score2, score3, (score1 + score2 + score3) AS total_score FROM geo_games_usa_leaderboard ORDER BY total_score DESC";
         $result = $conn->query($sql);
 
         $leaderboard = [];
@@ -78,25 +78,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $score = $data['score'];
 
         if ($game === 'game1') {
-            $sql = "SELECT score1 FROM geo_games_usa_leaderboard WHERE uuid = '$uuid'";
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-                $row = $result->fetch_assoc();
-                $currentscore = $row['score1'];
-
-                if ($score > $currentscore) {
-                    $sql = "UPDATE geo_games_usa_leaderboard SET score1 = $score WHERE uuid = '$uuid'";
-                    if ($conn->query($sql) === TRUE) {
-                        echo json_encode(["success" => true]);
-                    } else {
-                        echo json_encode(["success" => false, "error" => $conn->error]);
-                    }
-                } else {
-                    echo json_encode(["success" => false, "error" => "New score is not better than the current score"]);
-                }
+            $sql = "UPDATE geo_games_usa_leaderboard SET score1 = score1 + $score WHERE uuid = '$uuid'";
+            if ($conn->query($sql) === TRUE) {
+                echo json_encode(["success" => true]);
             } else {
-                echo json_encode(["success" => false, "error" => "User not found"]);
+                echo json_encode(["success" => false, "error" => $conn->error]);
             }
         } elseif ($game === 'game2') {
             $sql = "SELECT score2 FROM geo_games_usa_leaderboard WHERE uuid = '$uuid'";
@@ -120,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo json_encode(["success" => false, "error" => "User not found"]);
             }
         } elseif ($game === 'game3') {
-            $sql = "UPDATE leaderboard SET score = score + $score WHERE uuid = '$uuid'";
+            $sql = "UPDATE geo_games_usa_leaderboard SET score3 = score3 + $score WHERE uuid = '$uuid'";
             if ($conn->query($sql) === TRUE) {
                 echo json_encode(["success" => true]);
             } else {

@@ -21,7 +21,7 @@
   </div>
 
   <div :class="['counter', timerColor]">{{ minutes }}:{{ seconds }}</div>
-  <div class="leaderboard-button" @click="fetchLeaderboard">Leaderboard</div>
+  <!--<div class="leaderboard-button" @click="fetchLeaderboard">Leaderboard</div>-->
   <div class="guessed-countries">
     <h3>Guessed States</h3>
     <ul>
@@ -44,14 +44,14 @@
         <span :class="percentageClass">{{ percentage }}%</span> of other
         players.
       </p>
-      <span @click="fetchLeaderboard" class="leaderboard-link"
+     <!-- <span @click="fetchLeaderboard" class="leaderboard-link"
         >Leaderboard</span
-      >
+      >-->
       <button @click="reloadGame">Play Again</button>
     </div>
   </div>
 
-  <div v-if="showLeaderboard" class="modal2">
+ <!-- <div v-if="showLeaderboard" class="modal2">
     <div class="modal-content2">
       <span class="close" @click="showLeaderboard = false">&times;</span>
       <h2>Leaderboard</h2>
@@ -85,13 +85,13 @@
           <span class="place">{{ index + 4 }}. Place</span>
           <span
             >{{ player.name
-            }}<!--:--></span
+            }}--:--</span
           >
           <span class="score">{{ player.count }}</span>
         </li>
       </ul>
     </div>
-  </div>
+  </div>-->
 </template>
 
 <script>
@@ -108,7 +108,7 @@ export default {
       country: "",
       showOutline: true,
       showModal: false,
-      timeLeft: 20, //90,
+      timeLeft: 90, //90,
       leaderboard: [],
       showLeaderboard: false,
       percentage: 20,
@@ -159,12 +159,12 @@ export default {
     await this.initMap();
   },
   methods: {
-    fetchLeaderboard() {
+    /*fetchLeaderboard() {
       this.$axios("leaderboard.php").then((response) => {
         this.leaderboard = response.data;
         this.showLeaderboard = true;
       });
-    },
+    },*/
     startCountdown() {
       const countdown = setInterval(async () => {
         if (this.timeLeft > 0) {
@@ -370,7 +370,7 @@ export default {
     },
     reloadGame() {
       this.guessedCountries = [];
-      this.timeLeft = 20;
+      this.timeLeft = 90;
       this.showModal = false;
       this.updateMap();
     },
@@ -382,7 +382,7 @@ export default {
         const leaderboard = response.data;
         const playerCount = this.guessedCountries.length;
         const betterPlayers = leaderboard.filter(
-          (player) => player.count < playerCount
+          (player) => player.score2 < playerCount
         ).length;
         const totalPlayers = leaderboard.length;
         this.percentage = Math.round((betterPlayers / totalPlayers) * 100);

@@ -16,12 +16,6 @@
           <option value="hard">Hard</option>
           <option value="very hard">Very Hard</option>
         </select>
-        <span @click="fetchLeaderboard" class="leaderboard-link"
-          >Leaderboard</span
-        >
-        <span @click="logout()"
-          ><i class="fa-solid fa-user"></i> {{ username }}</span
-        >
       </div>
     </div>
     <div id="map" style="width: 100%; height: 100vh"></div>
@@ -96,9 +90,9 @@ export default {
       guessed: false,
       showLeaderboard: false,
       map: shallowRef(null),
-      difficulty: localStorage.getItem("difficulty"),
+      difficulty: "medium",
       username: localStorage.getItem("username"),
-      uuid: localStorage.getItem("uuid"),
+      uuid: localStorage.getItem("verification_id"),
       guessSubmitted: false,
       leaderboard: [],
       randomCity: {},
@@ -110,22 +104,14 @@ export default {
     await this.initMap();
   },
   methods: {
-    fetchLeaderboard() {
-      this.$axios
-        .post("leaderboard.php")
-        .then((response) => {
-          this.leaderboard = response.data;
-          this.showLeaderboard = true;
-        });
-    },
     fetchUserScore() {
       this.$axios
         .get(
-          `leaderboard.php?uuid=${this.uuid}`
+          `leaderboard.php?action=get_user&uuid=${this.uuid}`
         )
         .then((response) => {
-          if (response.data.score !== undefined) {
-            this.score = Number(response.data.score);
+          if (response.data.data.score3 !== undefined) {
+            this.score = Number(response.data.data.score3);
           } else {
             console.error("Error fetching user score:", response.data.error);
           }
@@ -136,6 +122,7 @@ export default {
         "leaderboard.php",
         JSON.stringify({
           action: "update",
+          game: "game3",
           uuid: this.uuid,
           score: count,
         })
@@ -394,7 +381,6 @@ h1 {
 }
 .difficulty {
   height: 39px;
-  margin-right: 10px;
 }
 
 .leaderboard-link {

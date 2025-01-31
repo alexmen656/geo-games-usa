@@ -5,10 +5,14 @@
       In this game, you get two countries, and your job is to guess other
       countries that connect them by sharing borders. Each country you guess has
       to touch the previous one, like building a chain. If you guess a country
-      that's not in the chain, it won't help you connect the two countries. They are harder and easier levels so reload with the button if it is to hard for you!
+      that's not in the chain, it won't help you connect the two countries. They
+      are harder and easier levels so reload with the button if it is to hard
+      for you!
     </p>
   </header>
-  <button class="back-to-games" @click="$router.push('/game-selection')">← Go back to all games</button>
+  <button class="back-to-games" @click="$router.push('/game-selection')">
+    ← Go back to all games
+  </button>
   <div id="map" style="width: 100%; height: 100vh"></div>
   <div id="floating-input">
     <h1>Go from {{ countryPair.from }} to {{ countryPair.to }}</h1>
@@ -236,6 +240,15 @@ export default {
         ) {
           const jsConfetti = new JSConfetti();
           jsConfetti.addConfetti();
+          this.$axios.post(
+            "leaderboard.php",
+            JSON.stringify({
+              action: "update",
+              game: "game3",
+              uuid: this.uuid,
+              score: 5,
+            })
+          );
           console.log("Correct!");
         } else {
           console.log("Incorrect!");
