@@ -2,7 +2,7 @@
   <div class="menu-view">
     <div class="overlay"></div>
     <header class="header">
-      <h1>USA Geo Games</h1>
+      <h1>GeoGames USA</h1>
       <div class="tabs">
         <button
           :class="{ active: activeTab === 'games' }"
