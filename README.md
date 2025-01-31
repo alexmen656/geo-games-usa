@@ -1,4 +1,13 @@
-# USA GEO Games
+# 🌍 GeoGames USA - Test your geography knowledge about the USA
+
+
+## Screenshots
+![Leaderboard](screenshots/1.jpg)
+![Select Game](screenshots/2.jpg)
+![Game1 - Guess the way](screenshots/3.jpg)
+![Game2 - Name all US states](screenshots/4.jpg)
+![Game3 - CityScope](screenshots/5.jpg)
+
 
 ## Project setup
 ```
