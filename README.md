@@ -1,28 +1,56 @@
 ## 🌍 GeoGames USA - Test Your Geography Knowledge About the USA
 
-GeoGames USA ist eine Sammlung von Geographiespielen rund um die USA. Aktuell gibt es folgende drei Spiele:
+GeoGames USA is a collection of geography games about the United States. Currently, there are three games available:
 
-1. **Guess the Way** – Du erhältst zwei US-Bundesstaaten und musst sie miteinander verbinden.
-2. **Name All US States** – Ziel ist es, in 1:30 Minuten so viele US-Bundesstaaten wie möglich zu benennen.
-3. **CityScope** – Du bekommst eine Stadt vorgegeben und musst ihren Standort mithilfe eines Radius finden. Es gibt fünf Schwierigkeitsstufen, von *sehr einfach* bis *sehr schwer*.
+1. **Guess the Way** – You are given two US states and must connect them.
+2. **Name All US States** – The challenge is to name as many US states as possible within 1:30 minutes.
+3. **CityScope** – You are given a city and must find its location using a radius. There are five difficulty levels, ranging from *very easy* to *very hard*.  
 
-## 📖 Spielanleitung
+   *Disclaimer:* CityScope was originally developed as a separate project. However, since it fits well within GeoGames USA, I decided to include it with slight modifications. Most of my development time was focused on *Guess the Way* and *Name All US States*.
 
-Detaillierte Anleitungen findest du direkt im Spiel. Klicke dazu auf den *"How to play?"*-Button unter dem jeweiligen Spiel. Dort wird alles erklärt, was du wissen musst.
+## 🚀 How to Use
 
-## 🏆 Rangliste
+1. Open the [GeoGames USA Demo](https://www.control-center.eu/).
+2. Choose a **username** and select one of **seven avatars** to personalize your experience.
+3. After registering, you will be redirected to the **homepage**, where the three games are listed.
+4. Pick a game and first read the instructions by clicking the **"How to play?"** button.
+5. Start the game and have fun testing your geography knowledge!
+6. After playing, don't forget to check your ranking on the **leaderboard**.
 
-Auf der Startseite gibt es eine zweite Registerkarte mit der *Leaderboard*-Ansicht. Die Rangliste ist für alle drei Spiele kombiniert, sodass der beste Spieler aller Spiele auf Platz 1 steht.  
+## 🎮 How to Play & Scoring System
 
-In der Tabelle bedeutet:
-- **G1 Score** → Punktzahl für *Guess the Way*
-- **G2 Score** → Punktzahl für *Name All US States*
-- **G3 Score** → Punktzahl für *CityScope*
+Each game has different mechanics and a unique scoring system:
 
-## 🎮 Demo
+- **Guess the Way** 🛤️  
+  You are given two US states and must connect them.  
+  **Scoring:** Each successful connection earns **5 points** for the leaderboard.
 
-Teste GeoGames USA live unter:  
+- **Name All US States** 🗺️  
+  You have 1:30 minutes to name as many US states as possible.  
+  **Scoring:** Your score equals the number of correctly named states. However, this score is **not cumulative**—if you score higher than your previous best, your leaderboard score updates to the new high score.
+
+- **CityScope** 📍  
+  You are given a city name and must locate it using a radius.  
+  **Scoring:** Points are awarded based on the difficulty level at which you correctly locate the city. Harder levels give more points.
+
+To fully understand each game, click the **"How to play?"** button before starting.
+
+## 🏆 Leaderboard
+
+On the homepage, there is a second tab with the *Leaderboard* section. The leaderboard is shared across all three games, so the overall best player ranks first.  
+
+In the table:
+- **G1 Score** → Score for *Guess the Way*
+- **G2 Score** → Score for *Name All US States*
+- **G3 Score** → Score for *CityScope*
+
+## 🌐 Demo
+
+Try GeoGames USA live at:  
 🔗 [GeoGames USA Demo](https://www.control-center.eu/)
+
+## 📢 Disclaimer
+The grammar and spelling in this README.md were improved by ChatGPT.
 
 ## Screenshots
 ![Leaderboard](screenshots/1.jpg)
